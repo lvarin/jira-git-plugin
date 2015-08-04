@@ -324,7 +324,18 @@ public class GitManagerImpl implements GitManager {
 	}
 
     public void activate() {
-        File root = new File(getRoot());
+        String rootString = getRoot();
+        if (rootString == null) {
+            log.error("getRoot() returns null");
+            return;
+        }
+        File root = null;
+        try {
+            root = new File(rootString);
+        } catch (NullPointerException e) {
+            log.error("Connection to git repository " + rootString + " failed: " + e.getMessage(), e);
+            return;
+        }
         RepositoryBuilder builder = new RepositoryBuilder().addCeilingDirectory(root).findGitDir(root);
         if (builder.getGitDir() == null) {
             builder.setGitDir(root);

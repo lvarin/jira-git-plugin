@@ -4,15 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.xiplink.jira.git</groupId>
     <artifactId>jira-git-plugin</artifactId>
-    <version>0.6.1-SNAPSHOT</version>
+    <version>0.6.1-cern</version>
 
     <name>JIRA Git plugin</name>
     <packaging>atlassian-plugin</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jira.version>5.0.1</jira.version>
+        <jira.version>6.4.7</jira.version>
         <jira.data.version>5.0.1</jira.data.version>
+        <amps.version>5.0.4</amps.version>
     </properties>
 
     <description>Git Jira plugin</description>
@@ -127,11 +128,11 @@
             <plugin>
                 <groupId>com.atlassian.maven.plugins</groupId>
                 <artifactId>maven-jira-plugin</artifactId>
-                <version>3.9.1</version>
+                <version>${amps.version}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <productVersion>${jira.version}</productVersion>
-                    <productDataVersion>${jira.data.version}</productDataVersion>
+                    <productDataVersion>${jira.version}</productDataVersion>
                 </configuration>
             </plugin>
             <plugin>

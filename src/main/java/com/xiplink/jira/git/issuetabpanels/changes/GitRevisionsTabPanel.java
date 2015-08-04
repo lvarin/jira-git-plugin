@@ -36,7 +36,8 @@ public class GitRevisionsTabPanel extends AbstractIssueTabPanel {
 		this.permissionManager = permissionManager;
 	}
 
-    public List<IssueAction> getActions(Issue issue, User remoteUser) {
+    //public List<IssueAction> getActions(Issue issue, User remoteUser) {
+    public List getActions(Issue issue, User remoteUser) {
         try {
             RevisionIndexer revisionIndexer = multipleGitRepositoryManager.getRevisionIndexer();
 
