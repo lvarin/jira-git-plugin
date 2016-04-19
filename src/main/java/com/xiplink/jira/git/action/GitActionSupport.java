@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import com.atlassian.jira.security.Permissions;
+//import com.atlassian.jira.security.Permissions;
+import com.atlassian.jira.permission.GlobalPermissionKey;
 import com.atlassian.jira.web.action.JiraWebActionSupport;
 import com.xiplink.jira.git.MultipleGitRepositoryManager;
 import com.xiplink.jira.git.WebLinkType;
@@ -27,7 +28,7 @@ public class GitActionSupport extends JiraWebActionSupport {
     }
 
     public boolean hasPermissions() {
-        return isHasPermission(Permissions.ADMINISTER);
+        return hasGlobalPermission(GlobalPermissionKey.ADMINISTER);
     }
 
     public String doDefault() {

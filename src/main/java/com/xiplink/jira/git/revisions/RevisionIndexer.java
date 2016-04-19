@@ -17,6 +17,7 @@ import com.atlassian.jira.security.Permissions;
 import com.atlassian.jira.service.ServiceManager;
 import com.atlassian.jira.util.JiraKeyUtils;
 import com.atlassian.crowd.embedded.api.User;
+import com.atlassian.jira.user.ApplicationUser;
 import com.opensymphony.util.TextUtils;
 import com.xiplink.jira.git.GPropertiesLoader;
 import com.xiplink.jira.git.GitManager;
@@ -489,7 +490,7 @@ public class RevisionIndexer {
      * @throws java.io.IOException
      *             if reading the Lucene index fails
      */
-    public List<RevisionInfo> getLogEntriesByProject(String projectKey, User user, int numberOfEntries)
+    public List<RevisionInfo> getLogEntriesByProject(String projectKey, ApplicationUser user, int numberOfEntries)
             throws IndexException, IOException {
         if (projectKey == null || numberOfEntries < 0) {
             throw new IllegalArgumentException("getLogEntriesByProject(" + projectKey + ", " + numberOfEntries + ")");
@@ -593,7 +594,7 @@ public class RevisionIndexer {
      * @throws java.io.IOException
      *             if reading the Lucene index fails
      */
-    public List<RevisionInfo> getLogEntriesByVersion(Version version, User user, int numberOfEntries)
+    public List<RevisionInfo> getLogEntriesByVersion(Version version, ApplicationUser user, int numberOfEntries)
             throws IndexException, IOException {
         if (version == null || numberOfEntries < 0) {
             throw new IllegalArgumentException("getLogEntriesByVersion(" + version + ")");

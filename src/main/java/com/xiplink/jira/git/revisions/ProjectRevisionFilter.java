@@ -1,6 +1,7 @@
 package com.xiplink.jira.git.revisions;
 
 import com.atlassian.crowd.embedded.api.User;
+import com.atlassian.jira.user.ApplicationUser;
 import com.atlassian.jira.issue.Issue;
 import com.atlassian.jira.issue.IssueManager;
 import com.atlassian.jira.security.PermissionManager;
@@ -20,7 +21,7 @@ public class ProjectRevisionFilter extends AbstractRevisionFilter
 {
     private final String projectKey;
 
-    public ProjectRevisionFilter(IssueManager issueManager, PermissionManager permissionManager, User user, String projectKey)
+    public ProjectRevisionFilter(IssueManager issueManager, PermissionManager permissionManager, ApplicationUser user, String projectKey)
     {
         super(issueManager, permissionManager, user);
         this.projectKey = projectKey;

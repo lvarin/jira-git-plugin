@@ -27,6 +27,7 @@ import com.atlassian.jira.security.PermissionManager;
 import com.atlassian.jira.security.Permissions;
 import com.atlassian.jira.web.action.ProjectActionSupport;
 import com.atlassian.crowd.embedded.api.User;
+import com.atlassian.jira.user.ApplicationUser;
 import com.xiplink.jira.git.MultipleGitRepositoryManager;
 import com.xiplink.jira.git.revisions.RevisionIndexer;
 
@@ -97,7 +98,7 @@ public class GitProjectTabPanel extends AbstractProjectTabPanel implements Proje
         Map<String, Object> startingParams = new HashMap<String, Object>();
         Project project = browser.getProject();
         String key = project.getKey();
-        User user = browser.getUser();
+        ApplicationUser user = browser.getUser();
 
 		// Get selected versionNumber, if any
 		Long versionNumber = getVersionRequestParameter();
@@ -141,7 +142,7 @@ public class GitProjectTabPanel extends AbstractProjectTabPanel implements Proje
 	 * @return A List of {@link GitProjectRevisionAction} objects, each of which holds a valid {@link RevCommit}.
 	 *         The number of commits returned is decided by the constant <code>NUMBER_OF_REVISIONS</code>.
 	 */
-	private Collection<GitProjectRevisionAction> getRecentCommits(String key, Version version, User user) {
+	private Collection<GitProjectRevisionAction> getRecentCommits(String key, Version version, ApplicationUser user) {
 		if (log.isDebugEnabled()) {
 			log.debug(">getRecentCommits(" + key + ", " + version + ")");
 		}
@@ -208,7 +209,7 @@ public class GitProjectTabPanel extends AbstractProjectTabPanel implements Proje
 	 * @return true if the tab should be shown, false if not
 	 */
 	public boolean showPanel(BrowseContext browseContext) {
-		User user = browseContext.getUser();
+		ApplicationUser user = browseContext.getUser();
 		return multipleGitRepositoryManager.isIndexingRevisions() &&
 						permissionManager.hasPermission(Permissions.VIEW_VERSION_CONTROL, browseContext.getProject(), user);
 	}

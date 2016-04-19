@@ -1,6 +1,7 @@
 package com.xiplink.jira.git.revisions;
 
 import com.atlassian.crowd.embedded.api.User;
+import com.atlassian.jira.user.ApplicationUser;
 import com.atlassian.jira.issue.IssueManager;
 import com.atlassian.jira.security.PermissionManager;
 import org.apache.commons.lang.StringUtils;
@@ -14,11 +15,11 @@ public abstract class AbstractRevisionFilter extends Filter
 
     final PermissionManager permissionManager;
 
-    final User user;
+    final ApplicationUser user;
 
     final FieldSelector issueKeysFieldSelector;
 
-    public AbstractRevisionFilter(IssueManager issueManager, PermissionManager permissionManager, User user)
+    public AbstractRevisionFilter(IssueManager issueManager, PermissionManager permissionManager, ApplicationUser user)
     {
         this.issueManager = issueManager;
         this.permissionManager = permissionManager;

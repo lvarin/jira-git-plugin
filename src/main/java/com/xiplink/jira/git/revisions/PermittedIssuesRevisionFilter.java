@@ -1,6 +1,7 @@
 package com.xiplink.jira.git.revisions;
 
 import com.atlassian.crowd.embedded.api.User;
+import com.atlassian.jira.user.ApplicationUser;
 import com.atlassian.jira.issue.IssueManager;
 import com.atlassian.jira.security.PermissionManager;
 import org.apache.lucene.index.IndexReader;
@@ -17,7 +18,7 @@ public class PermittedIssuesRevisionFilter extends AbstractRevisionFilter
 {
     private final Set<String> permittedIssueKeys;
 
-    public PermittedIssuesRevisionFilter(IssueManager issueManager, PermissionManager permissionManager, User user, Set<String> permittedIssueKeys)
+    public PermittedIssuesRevisionFilter(IssueManager issueManager, PermissionManager permissionManager, ApplicationUser user, Set<String> permittedIssueKeys)
     {
         super(issueManager, permissionManager, user);
         this.permittedIssueKeys = permittedIssueKeys;

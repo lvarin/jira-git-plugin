@@ -23,6 +23,8 @@ import com.atlassian.jira.security.PermissionManager;
 import com.atlassian.jira.security.Permissions;
 
 import com.atlassian.crowd.embedded.api.User;
+import com.atlassian.jira.user.ApplicationUser;
+
 import com.xiplink.jira.git.MultipleGitRepositoryManager;
 
 public class GitRevisionsTabPanel extends AbstractIssueTabPanel {
@@ -37,7 +39,7 @@ public class GitRevisionsTabPanel extends AbstractIssueTabPanel {
 	}
 
     //public List<IssueAction> getActions(Issue issue, User remoteUser) {
-    public List getActions(Issue issue, User remoteUser) {
+    public List getActions(Issue issue, ApplicationUser remoteUser) {
         try {
             RevisionIndexer revisionIndexer = multipleGitRepositoryManager.getRevisionIndexer();
 
@@ -72,7 +74,7 @@ public class GitRevisionsTabPanel extends AbstractIssueTabPanel {
         return descriptor.getI18nBean().getText(key);
     }
 
-    public boolean showPanel(Issue issue, User remoteUser) {
+    public boolean showPanel(Issue issue, ApplicationUser remoteUser) {
 		return multipleGitRepositoryManager.isIndexingRevisions() &&
 						permissionManager.hasPermission(Permissions.VIEW_VERSION_CONTROL, issue, remoteUser);
 	}
